@@ -3,7 +3,7 @@ app:
   baseUrl: http://localhost:3000
 
   support:
-    url: https://github.com/devxp-tech/backstage/issues # Used by common ErrorPage
+    url: https://github.com/analect/backstage/issues # Used by common ErrorPage
     items: # Used by common SupportButton component
       - title: Issues
         icon: github
@@ -13,7 +13,7 @@ app:
       - title: Slack Chatroom
         icon: chat
         links:
-          - url: https://devxp-tech.slack.com/archives/C03L5M16CS2
+          - url: https://analect.slack.com/archives/C03L5M16CS2
             title: '#backstage'
 
 organization:
@@ -144,7 +144,7 @@ scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
   defaultAuthor:
     name: ':robot: [backstage-bot]'
-    email: backstage@devxp-tech.io
+    email: backstage@analect.io
   # defaultCommitMessage: "🤖 U can't touch this" # Defaults to 'Initial commit'
 
 # Force Deploy
@@ -168,6 +168,6 @@ catalog:
   locations:
     # Backstage example components
     - type: url
-      target: https://github.com/devxp-tech/backstage-catalog/blob/main/devxp/all.yaml
+      target: https://github.com/analect/backstage-catalog/blob/main/devxp/all.yaml
 
 

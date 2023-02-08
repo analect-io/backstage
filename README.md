@@ -1,6 +1,6 @@
 # Backstage
 
-[![main](https://github.com/devxp-tech/backstage/actions/workflows/main.yml/badge.svg)](https://github.com/devxp-tech/backstage/actions/workflows/main.yml)
+[![main](https://github.com/analect/backstage/actions/workflows/main.yml/badge.svg)](https://github.com/analect/backstage/actions/workflows/main.yml)
 [![Quality Gate Status](https://sonar.diegoluisi.eti.br/api/project_badges/measure?project=backstage&metric=alert_status&token=6b826098cc984faf7c32b5f980fc84ac0e3b2880)](https://sonar.diegoluisi.eti.br/dashboard?id=backstage)
 [![App Status](https://argocd.diegoluisi.eti.br/api/badge?name=prd-backstage&revision=true)](https://argocd.diegoluisi.eti.br/applications/prd-backstage)
 
@@ -11,7 +11,7 @@
 | Name                      | Where to get?                                                                                                   |
 | :------------------------ | :-------------------------------------------------------------------------------------------------------------- |
 | GITHUB_ACCESS_TOKEN       | Generate a new personal access token in [GIthub Secure page](https://github.com/settings/tokens)                |
-| AUTH_GITHUB_CLIENT_ID     | Get in [Github app ID](https://github.com/organizations/devxp-tech/settings/applications/1927877)             |
+| AUTH_GITHUB_CLIENT_ID     | Get in [Github app ID](https://github.com/organizations/analect/settings/applications/1927877)             |
 | AUTH_GITHUB_CLIENT_SECRET | Open a tiket to Devxp to share this value                                                                       |
 | SONARQUBE_TOKEN           | Create a `Sonarqube` token using this [documentation](https://docs.sonarqube.org/latest/user-guide/user-token/) |
 
@@ -58,6 +58,6 @@ We ❤️ contributions big or small. [See our guide](contributing.md) on how to
 
 ### Thanks to all our contributors!
 
-<a href="https://github.com/devxp-tech/backstage/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=devxp-tech/backstage" />
+<a href="https://github.com/analect/backstage/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=analect/backstage" />
 </a>
