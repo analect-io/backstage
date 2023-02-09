@@ -1,8 +1,8 @@
 # Backstage
 
 [![main](https://github.com/analect/backstage/actions/workflows/main.yml/badge.svg)](https://github.com/analect/backstage/actions/workflows/main.yml)
-[![Quality Gate Status](https://sonar.diegoluisi.eti.br/api/project_badges/measure?project=backstage&metric=alert_status&token=6b826098cc984faf7c32b5f980fc84ac0e3b2880)](https://sonar.diegoluisi.eti.br/dashboard?id=backstage)
-[![App Status](https://argocd.diegoluisi.eti.br/api/badge?name=prd-backstage&revision=true)](https://argocd.diegoluisi.eti.br/applications/prd-backstage)
+[![Quality Gate Status](https://sonar.analect.com/api/project_badges/measure?project=backstage&metric=alert_status&token=6b826098cc984faf7c32b5f980fc84ac0e3b2880)](https://sonar.analect.com/dashboard?id=backstage)
+[![App Status](https://argocd.analect.com/api/badge?name=prd-backstage&revision=true)](https://argocd.analect.com/applications/prd-backstage)
 
 ## Backstage - IDP
 

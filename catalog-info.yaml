@@ -19,7 +19,7 @@ metadata:
     - frontend
     - backstage
   links:
-    - url: https://backstage.diegoluisi.eti.br
+    - url: https://backstage.analect.com
       title: Backstage
       icon: cloud
 spec:
