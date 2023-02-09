@@ -17,7 +17,7 @@ app:
             title: '#backstage'
 
 organization:
-  name: DevXP Tech
+  name: Analect
 
 backend:
   # Used for enabling authentication, secret is shared by all backend plugins
@@ -144,7 +144,7 @@ scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
   defaultAuthor:
     name: ':robot: [backstage-bot]'
-    email: backstage@analect.io
+    email: info@analect.com
   # defaultCommitMessage: "🤖 U can't touch this" # Defaults to 'Initial commit'
 
 # Force Deploy
@@ -168,6 +168,6 @@ catalog:
   locations:
     # Backstage example components
     - type: url
-      target: https://github.com/analect/backstage-catalog/blob/main/devxp/all.yaml
+      target: https://github.com/analect/backstage-catalog/blob/main/analect/all.yaml
 
 
