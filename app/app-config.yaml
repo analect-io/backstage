@@ -13,7 +13,7 @@ app:
       - title: Slack Chatroom
         icon: chat
         links:
-          - url: https://analect.slack.com/archives/C03L5M16CS2
+          - url: https://analect.slack.com/archives/C04NPS4UL79
             title: '#backstage'
 
 organization:
@@ -117,7 +117,7 @@ proxy:
   #       $env: SNYK_TOKEN
 
 sonarqube:
-  baseUrl: https://sonar.analect.com
+  baseUrl: https://sonarqube.analect.com
   apiKey: '${SONARQUBE_TOKEN}'
 
 grafana:
