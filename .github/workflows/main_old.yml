@@ -170,7 +170,7 @@ jobs:
 
     - name: GitOps Checkout 🛎️
       run: |
-        git clone https://${{ secrets.ACCESS_TOKEN_GITHUB }}@github.com/analect/gitops
+        git clone https://${{ secrets.ACCESS_TOKEN_GITHUB }}@github.com/analect-io/gitops
         cd gitops
         git config user.name "$GITHUB_ACTOR"
         git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
@@ -186,7 +186,7 @@ jobs:
     - name: Commit and Push 🚀
       run: |
         cd gitops/
-        git commit -am ":robot: [GitHub Action] Set new image tag to https://github.com/analect/backstage/commit/${{ needs.vars.outputs.tag }}"
+        git commit -am ":robot: [GitHub Action] Set new image tag to https://github.com/analect-io/backstage/commit/${{ needs.vars.outputs.tag }}"
         git push
 
   slack-workflow-status:
