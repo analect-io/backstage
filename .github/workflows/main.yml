@@ -97,7 +97,7 @@ jobs:
     needs:
       - vars
       - build
-      - sonarqube
+    #  - sonarqube
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
