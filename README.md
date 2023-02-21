@@ -52,6 +52,38 @@ docker-compose up -d app # to up the backstage application
 Backstage in develop mode will be available in <http://backstage.local:3000> and it's using `GitHub SSO integration`
 
 
+## 🚦 Work Flux
+
+```mermaid
+graph TD;
+    Dev-->Backstage;
+    Backstage--create-->devxp-app;
+    devxp-app-->golang;
+    devxp-app-->python;
+    devxp-app-->node;
+    golang--new-app-->backstage-catalog;
+    backstage-catalog--fetch-->github/devxp-tech/template-golang;
+    backstage-catalog--fetch-->kubernetes-skelleton;
+    backstage-catalog--push-->github/devxp-tech/new-app;
+    kubernetes-skelleton--PullRequest-->ArgoCD;
+    github/devxp-tech/new-app--workflow-->devxp-tech/.github/workflows;
+    ArgoCD--pull-->helm-charts/devxp-app;
+    ArgoCD--deploy-->Kubernetes;
+    devxp-tech/.github/workflows--push/docker-image-->ghcr.github.com/devxp-tech;
+    Kubernetes--pull/docker-image-->ghcr.github.com/devxp-tech;
+    Kubernetes-->new-app;
+```
+
+## 🧩 References 
+
+- [ArgoCD](https://github.com/devxp-tech/gitops)
+- [helm-charts](https://github.com/devxp-tech/helm-charts)
+- [Backstage](https://github.com/devxp-tech/backstage)
+- [backstage-catalog:](https://github.com/devxp-tech/backstage-catalog)
+- [template-golang](https://github.com/devxp-tech/template-golang)
+- [github-workflows](https://github.com/devxp-tech/.github)
+
+
 ## ✨ Contributions
 
 We ❤️ contributions big or small. [See our guide](contributing.md) on how to get started.
@@ -61,3 +93,5 @@ We ❤️ contributions big or small. [See our guide](contributing.md) on how to
 <a href="https://github.com/analect-io/backstage/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=analect/backstage" />
 </a>
+
+Made with 💜 by DevXP-Tech.

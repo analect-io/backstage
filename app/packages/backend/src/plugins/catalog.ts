@@ -3,6 +3,7 @@ import { ScaffolderEntitiesProcessor } from '@backstage/plugin-scaffolder-backen
 import { Router } from 'express';
 import { PluginEnvironment } from '../types';
 import { GitHubOrgEntityProvider } from '@backstage/plugin-catalog-backend-module-github';
+// import { GithubEntityProvider } from '@backstage/plugin-catalog-backend-module-github';
 
 
 export default async function createPlugin(
@@ -23,6 +24,7 @@ export default async function createPlugin(
       }),
     }),
   );
+
 
   builder.addProcessor(new ScaffolderEntitiesProcessor());
   const { processingEngine, router } = await builder.build();
