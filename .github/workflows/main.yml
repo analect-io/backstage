@@ -180,7 +180,7 @@ jobs:
         cd gitops/apps/backstage/overlays/prd
         OLD_TAG=$(cat kustomization.yaml | grep 'tag:' |  awk '{print $2}')
         NEW_TAG=${{ needs.vars.outputs.tag }}
-        # kustomize edit set image analect/backstage:${{ needs.vars.outputs.tag }}
+        # kustomize edit set image analect-io/backstage:${{ needs.vars.outputs.tag }}
         sed -i "s|$OLD_TAG|$NEW_TAG|g" kustomization.yaml
 
     - name: Commit and Push 🚀
