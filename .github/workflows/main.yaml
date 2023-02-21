@@ -13,7 +13,7 @@ on:
 
 jobs:
   env:
-    uses: devxp-tech/.github/.github/workflows/env.yaml@main
+    uses: analect-io/.github/.github/workflows/env.yaml@main
 
   # test:
   #   uses: analect-io/.github/.github/workflows/test.yaml@main

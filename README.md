@@ -62,26 +62,26 @@ graph TD;
     devxp-app-->python;
     devxp-app-->node;
     golang--new-app-->backstage-catalog;
-    backstage-catalog--fetch-->github/devxp-tech/template-golang;
+    backstage-catalog--fetch-->github/analect-io/template-golang;
     backstage-catalog--fetch-->kubernetes-skelleton;
-    backstage-catalog--push-->github/devxp-tech/new-app;
+    backstage-catalog--push-->github/analect-io/new-app;
     kubernetes-skelleton--PullRequest-->ArgoCD;
-    github/devxp-tech/new-app--workflow-->devxp-tech/.github/workflows;
+    github/analect-io/new-app--workflow-->analect-io/.github/workflows;
     ArgoCD--pull-->helm-charts/devxp-app;
     ArgoCD--deploy-->Kubernetes;
-    devxp-tech/.github/workflows--push/docker-image-->ghcr.github.com/devxp-tech;
-    Kubernetes--pull/docker-image-->ghcr.github.com/devxp-tech;
+    analect-io/.github/workflows--push/docker-image-->ghcr.github.com/analect-io;
+    Kubernetes--pull/docker-image-->ghcr.github.com/analect-io;
     Kubernetes-->new-app;
 ```
 
 ## 🧩 References 
 
-- [ArgoCD](https://github.com/devxp-tech/gitops)
-- [helm-charts](https://github.com/devxp-tech/helm-charts)
-- [Backstage](https://github.com/devxp-tech/backstage)
-- [backstage-catalog:](https://github.com/devxp-tech/backstage-catalog)
-- [template-golang](https://github.com/devxp-tech/template-golang)
-- [github-workflows](https://github.com/devxp-tech/.github)
+- [ArgoCD](https://github.com/analect-io/gitops)
+- [helm-charts](https://github.com/analect-io/helm-charts)
+- [Backstage](https://github.com/analect-io/backstage)
+- [backstage-catalog:](https://github.com/analect-io/backstage-catalog)
+- [template-golang](https://github.com/analect-io/template-golang)
+- [github-workflows](https://github.com/analect-io/.github)
 
 
 ## ✨ Contributions
