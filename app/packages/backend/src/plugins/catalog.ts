@@ -15,7 +15,7 @@ export default async function createPlugin(
   builder.addEntityProvider(
     GitHubOrgEntityProvider.fromConfig(env.config, {
       id: 'production',
-      orgUrl: 'https://github.com/analect',
+      orgUrl: 'https://github.com/analect-io',
       logger: env.logger,
       schedule: env.scheduler.createScheduledTaskRunner({
         frequency: { minutes: 60 },

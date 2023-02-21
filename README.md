@@ -11,7 +11,7 @@
 | Name                      | Where to get?                                                                                                   |
 | :------------------------ | :-------------------------------------------------------------------------------------------------------------- |
 | GITHUB_ACCESS_TOKEN       | Generate a new personal access token in [GIthub Secure page](https://github.com/settings/tokens)                |
-| AUTH_GITHUB_CLIENT_ID     | Get in [Github app ID](https://github.com/organizations/analect/settings/applications/1927877)             |
+| AUTH_GITHUB_CLIENT_ID     | Get in [Github app ID](https://github.com/organizations/analect-io/settings/applications/1927877)             |
 | AUTH_GITHUB_CLIENT_SECRET | Open a tiket to analect to share this value                                                                       |
 | SONARQUBE_TOKEN           | Create a `Sonarqube` token using this [documentation](https://docs.sonarqube.org/latest/user-guide/user-token/) |
 
