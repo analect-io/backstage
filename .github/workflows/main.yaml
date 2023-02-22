@@ -137,11 +137,12 @@ jobs:
         sed -i "s|$OLD_TAG|$NEW_TAG|g" kustomization.yaml
 
     - name: Commit and Push 🚀
+      uses: actions/checkout@v3
       run: |
         cd gitops/
         git commit -am ":robot: [GitHub Action] Set new image tag to https://github.com/analect-io/backstage/commit/${{ needs.env.outputs.tag }}"
-        git push https://${{ secrets.ACCESS_TOKEN_GITHUB }}@github.com/analect-io/gitops
-
+        git push
+      
   notify:
     uses: analect-io/.github/.github/workflows/notify.yaml@main
     if: always()
