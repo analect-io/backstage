@@ -116,10 +116,12 @@ jobs:
       # - security-gateway
 
     steps:
-    - name: Set Kustomize 🛠️
-      uses: imranismail/setup-kustomize@v1
-      with:
-        kustomize-version: "3.9.4"
+      - name: Set checkout
+        uses: actions/checkout@v3
+    # - name: Set Kustomize 🛠️
+    #   uses: imranismail/setup-kustomize@v1
+    #   with:
+    #     kustomize-version: "3.9.4"
 
     - name: GitOps Checkout 🛎️
       run: |
@@ -137,7 +139,6 @@ jobs:
         sed -i "s|$OLD_TAG|$NEW_TAG|g" kustomization.yaml
 
     - name: Commit and Push 🚀
-      uses: actions/checkout@v3
       run: |
         cd gitops/
         git commit -am ":robot: [GitHub Action] Set new image tag to https://github.com/analect-io/backstage/commit/${{ needs.env.outputs.tag }}"
