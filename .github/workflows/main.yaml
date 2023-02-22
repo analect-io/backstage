@@ -116,8 +116,8 @@ jobs:
       # - security-gateway
 
     steps:
-      - name: Set checkout
-        uses: actions/checkout@v3
+    - name: Set checkout
+      uses: actions/checkout@v3
     # - name: Set Kustomize 🛠️
     #   uses: imranismail/setup-kustomize@v1
     #   with:
