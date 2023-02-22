@@ -175,6 +175,6 @@ catalog:
   locations:
     # Backstage example components
     - type: url
-      target: https://github.com/analect-io/backstage-catalog/blob/main/analect-io/all.yaml
+      target: https://github.com/analect-io/backstage-catalog/blob/main/analect/all.yaml
 
 
