@@ -57,17 +57,17 @@ Backstage in develop mode will be available in <http://backstage.local:3000> and
 ```mermaid
 graph TD;
     Dev-->Backstage;
-    Backstage--create-->devxp-app;
-    devxp-app-->golang;
-    devxp-app-->python;
-    devxp-app-->node;
+    Backstage--create-->analect-app;
+    analect-app-->golang;
+    analect-app-->python;
+    analect-app-->node;
     golang--new-app-->backstage-catalog;
     backstage-catalog--fetch-->github/analect-io/template-golang;
     backstage-catalog--fetch-->kubernetes-skelleton;
     backstage-catalog--push-->github/analect-io/new-app;
     kubernetes-skelleton--PullRequest-->ArgoCD;
     github/analect-io/new-app--workflow-->analect-io/.github/workflows;
-    ArgoCD--pull-->helm-charts/devxp-app;
+    ArgoCD--pull-->helm-charts/analect-app;
     ArgoCD--deploy-->Kubernetes;
     analect-io/.github/workflows--push/docker-image-->ghcr.github.com/analect-io;
     Kubernetes--pull/docker-image-->ghcr.github.com/analect-io;
