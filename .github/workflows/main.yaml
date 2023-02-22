@@ -142,7 +142,10 @@ jobs:
       run: |
         cd gitops/
         git commit -am ":robot: [GitHub Action] Set new image tag to https://github.com/analect-io/backstage/commit/${{ needs.env.outputs.tag }}"
-        git push
+        git push https://$USERNAME:$REPO_KEY@github.com/analect-io/gitops.git
+      env:
+        REPO_KEY: ${{secrets.ACCESS_TOKEN_GITHUB}}
+        USERNAME: github-actions[bot]
       
   notify:
     uses: analect-io/.github/.github/workflows/notify.yaml@main
