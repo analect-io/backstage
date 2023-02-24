@@ -2,7 +2,7 @@ import { CatalogBuilder } from '@backstage/plugin-catalog-backend';
 import { ScaffolderEntitiesProcessor } from '@backstage/plugin-scaffolder-backend';
 import { Router } from 'express';
 import { PluginEnvironment } from '../types';
-import { GitHubOrgEntityProvider } from '@backstage/plugin-catalog-backend-module-github';
+import { GithubOrgEntityProvider } from '@backstage/plugin-catalog-backend-module-github';
 // import { GithubEntityProvider } from '@backstage/plugin-catalog-backend-module-github';
 
 
@@ -14,7 +14,7 @@ export default async function createPlugin(
   // The org URL below needs to match a configured integrations.github entry
   // specified in your app-config.
   builder.addEntityProvider(
-    GitHubOrgEntityProvider.fromConfig(env.config, {
+    GithubOrgEntityProvider.fromConfig(env.config, {
       id: 'production',
       orgUrl: 'https://github.com/analect-io',
       logger: env.logger,

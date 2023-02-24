@@ -367,7 +367,7 @@
     "v8_trace_maps": 0,
     "v8_use_siphash": 1,
     "want_separate_host_toolset": 0,
-    "nodedir": "/Users/diegoluisi/Library/Caches/node-gyp/18.6.0",
+    "nodedir": "/Users/analect-io/Library/Caches/node-gyp/18.6.0",
     "standalone_static_library": 1
   }
 }
