@@ -124,7 +124,7 @@ proxy:
   #       $env: SNYK_TOKEN
 
 sonarqube:
-  baseUrl: https://sonarqube.analect.com:9000
+  baseUrl: https://sonar.analect.com
   apiKey: '${SONARQUBE_TOKEN}'
 
 grafana:
