@@ -1,0 +1,120 @@
+name: main
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'README.md'
+      - 'mkdocs.yml'
+      - 'docs/**'
+      - 'catalog-info.yaml'
+
+
+jobs:
+  env:
+    uses: analect-io/.github/.github/workflows/env.yaml@main
+
+  # test:
+  #   uses: analect-io/.github/.github/workflows/test.yaml@main
+
+  quality-gate:
+    uses: analect-io/.github/.github/workflows/sonarqube.yaml@main
+    secrets: inherit
+
+  build:
+    name: Yarn Build 🔨
+    runs-on: ubuntu-latest
+    needs:
+      - env
+      # - test
+      - quality-gate
+    steps:
+      - name: app checkout
+        uses: actions/checkout@v3
+
+      - name: Configure Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: Cache node_modules
+        id: cache-modules
+        uses: actions/cache@v3
+        with:
+          path: app/node_modules
+          key: npm-build-${{ hashFiles('app/package-lock.json') }}
+          restore-keys: |
+            npm-build-
+            npm-
+
+      - name: yarn install and build
+        run: |
+          cd app/
+          yarn add --cwd packages/app @backstage/plugin-sonarqube
+          yarn install --frozen-lockfile
+          yarn tsc
+          yarn build
+
+      - name: persist build files
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-folder
+          path: app/packages/backend/dist
+          if-no-files-found: error
+
+  build-and-push:
+    name: Build and Push 📦
+    runs-on: ubuntu-latest
+    needs:
+      - env
+      - build
+      - quality-gate
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Set rev.txt 🛠️
+        run: git show -s --format="%ai %H %s %aN" HEAD > rev.txt
+
+      - name: grant dist folder exists
+        run: mkdir -p app/packages/backend/dist
+
+      - name: restore build files
+        uses: actions/download-artifact@v3
+        with:
+          name: app-folder
+          path: app/packages/backend/dist
+
+      - name: verify artifacts before
+        run: ls -lRa app/packages/backend/dist
+
+      - name: Login Docker Registry 🪪
+        uses: docker/login-action@v2.1.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
+
+      - name: Build and Push Docker 🚀
+        run: |
+          cd app/
+          docker image build . -f packages/backend/Dockerfile --tag ghcr.io/analect-io/backstage:${{ needs.env.outputs.tag }}
+          docker push ghcr.io/analect-io/backstage:${{ needs.env.outputs.tag }}
+
+  # security-gateway:
+  #   uses: analect-io/.github/.github/workflows/trivy.yaml@main
+  #   needs:
+  #     - build-and-push
+
+  deploy:
+    name: GitOps Deploy 🏗️
+    runs-on: ubuntu-latest
+    needs:
+      - env
+  notify:
+    uses: analect-io/.github/.github/workflows/notify.yaml@main
+    if: always()
+    secrets: inherit
+    needs:
+      - promote
