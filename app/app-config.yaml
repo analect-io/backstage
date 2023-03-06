@@ -90,7 +90,7 @@ techdocs:
 
 proxy:
   '/argocd/api':
-    target: https://argocd.diegoluisi.eti.br/api/v1/
+    target: https://argocd.analect.com/api/v1/
     changeOrigin: true
     # only if your argocd api has self-signed cert
     secure: true
@@ -100,7 +100,7 @@ proxy:
 
   '/grafana/api':
     # May be an internal DNS
-    target: https://grafana.diegoluisi.eti.br/
+    target: https://grafana.analect.com/
     headers:
       Authorization: Bearer ${GRAFANA_TOKEN}
 
@@ -164,4 +164,4 @@ catalog:
       target: https://github.com/analect-io/backstage-catalog/blob/main/analect/all.yaml
 
     - type: url
-      target: https://github.com/devxp-tech/backstage/blob/main/catalog-info.yaml
+      target: https://github.com/analect-io/backstage/blob/main/catalog-info.yaml
