@@ -1,0 +1,69 @@
+name: first-release
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  env:
+    uses: analect-io/.github/.github/workflows/env.yaml@main
+
+  test:
+    uses: analect-io/.github/.github/workflows/test.yaml@main
+
+  quality-gate:
+    uses: analect-io/.github/.github/workflows/sonarqube.yaml@main
+    secrets: inherit
+
+  docs:
+    uses: analect-io/.github/.github/workflows/techdocs.yaml@main
+    secrets: inherit
+    with:
+      repository: ${{ needs.env.outputs.repository }}
+    needs:
+      - env
+
+  build-and-push:
+    uses: analect-io/.github/.github/workflows/build-and-push.yaml@main
+    with:
+      tag: ${{ needs.env.outputs.tag }}
+    needs:
+      - env
+      - test
+      - quality-gate
+
+  security-gateway:
+    uses: analect-io/.github/.github/workflows/trivy.yaml@main
+    needs:
+      - build-and-push
+
+  deploy:
+    uses: analect-io/.github/.github/workflows/deploy.yaml@main
+    secrets: inherit
+    with:
+      tag: ${{ needs.env.outputs.tag }}
+      repository: ${{ needs.env.outputs.repository }}
+      url: https://${{ needs.env.outputs.repository }}.analect.com
+      environment: development
+    needs:
+      - env
+      - security-gateway
+
+  promote:
+    uses: devxp-tech/.github/.github/workflows/promote.yaml@main
+    secrets: inherit
+    with:
+      tag: ${{ needs.env.outputs.tag }}
+      repository: ${{ needs.env.outputs.repository }}
+      url: https://${{ needs.env.outputs.repository }}.analect.com
+      environment: production
+    needs:
+      - env
+      - deploy
+
+  notify:
+    uses: analect-io/.github/.github/workflows/notify.yaml@main
+    if: always()
+    secrets: inherit
+    needs:
+      - promote

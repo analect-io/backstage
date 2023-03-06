@@ -1,5 +1,18 @@
 version: "3.8"
 services:
+  test: &defaults
+    build:
+      context: .
+      target: dev
+    # depends_on:
+    #   - liquibase
+    working_dir: /app/app
+    command: sh -c 'yarn tsc'
+    environment:
+      - ENVIRONMENT=development
+    volumes:
+      - ./app:/app
+
   app:
     image: backstage:dev
     build:
@@ -26,6 +39,10 @@ services:
       - POSTGRES_DATABASE=backstage
       - SONARQUBE_TOKEN=$SONARQUBE_TOKEN
       - GIT_DISCOVERY_ACROSS_FILESYSTEM=1
+      - AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+      - AWS_REGION=$AWS_REGION
+      - TECHDOCS_BUCKET=$TECHDOCS_BUCKET
     depends_on:
       - postgres
 

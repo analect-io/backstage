@@ -1,0 +1,41 @@
+name: release
+
+on:
+  push:
+    branches:
+      - 'release/**'
+
+jobs:
+  env:
+    uses: analect-io/.github/.github/workflows/env.yaml@main
+
+  build-and-push:
+    uses: analect-io/.github/.github/workflows/build-and-push.yaml@main
+    with:
+      tag: ${{ needs.env.outputs.tag }}
+    needs:
+      - env
+
+  security-gateway:
+    uses: analect-io/.github/.github/workflows/trivy.yaml@main
+    needs:
+      - build-and-push
+
+  deploy:
+    uses: analect-io/.github/.github/workflows/deploy.yaml@main
+    secrets: inherit
+    with:
+      tag: ${{ needs.env.outputs.tag }}
+      repository: ${{ needs.env.outputs.repository }}
+      url: https://${{ needs.env.outputs.repository }}.analect.com
+      environment: development
+    needs:
+      - env
+      - security-gateway
+
+  notify:
+    uses: analect-io/.github/.github/workflows/notify.yaml@main
+    if: always()
+    secrets: inherit
+    needs:
+      - deploy

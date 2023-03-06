@@ -1,0 +1,19 @@
+name: techdocs
+
+on:
+  push:
+    paths:
+      - "docs/**"
+      - "mkdocs.yml"
+
+jobs:
+  env:
+    uses: analect-io/.github/.github/workflows/env.yaml@main
+
+  docs:
+    uses: analect-io/.github/.github/workflows/techdocs.yaml@main
+    secrets: inherit
+    with:
+      repository: ${{ needs.env.outputs.repository }}
+    needs:
+      - env
