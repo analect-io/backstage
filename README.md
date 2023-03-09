@@ -91,7 +91,7 @@ We ❤️ contributions big or small. [See our guide](contributing.md) on how to
 ### Thanks to all our contributors!
 
 <a href="https://github.com/analect-io/backstage/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=analect/backstage" />
+  <img src="https://contrib.rocks/image?repo=analect-io/backstage" />
 </a>
 
 Made with 💜 by DevXP-Tech.
