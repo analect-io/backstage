@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: backstage-web
+  name: backstage
   description: Backstage Frontend
   annotations:
     github.com/project-slug: analect/backstage
