@@ -42,7 +42,7 @@ integrations:
   github:
     - host: github.com
       apps:
-        - $include: ${config}
+        - $include: ${CONFIG_BACKSTAGE_GITHUB_APP}
       token: ${GITHUB_TOKEN}
 
 kubernetes:
