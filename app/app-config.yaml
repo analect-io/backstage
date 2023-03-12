@@ -70,7 +70,7 @@ integrations:
   github:
     - host: github.com
       apps:
-        - $include: ${CONFIG_BACKSTAGE_GITHUB_APP}
+        - $include: ./backstage-integration-config.yaml
       token: ${GITHUB_TOKEN}
 
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
