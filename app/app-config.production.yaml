@@ -41,6 +41,8 @@ backend:
 integrations:
   github:
     - host: github.com
+      apps:
+        - $include: ${config}
       token: ${GITHUB_TOKEN}
 
 kubernetes:

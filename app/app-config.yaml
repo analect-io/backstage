@@ -69,6 +69,8 @@ backend:
 integrations:
   github:
     - host: github.com
+      apps:
+        - $include: ${config}
       token: ${GITHUB_TOKEN}
 
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
