@@ -42,7 +42,7 @@ integrations:
   github:
     - host: github.com
       apps:
-        - $include: /home/runner/backstage-integration-config.yaml
+        - $include: ./backstage-integration-config.yaml
       token: ${GITHUB_TOKEN}
 
 kubernetes:

@@ -16,6 +16,7 @@ COPY --from=build app/packages/backend/dist/bundle.tar.gz .
 COPY --from=build app/packages/backend/dist/skeleton.tar.gz .
 COPY --from=build app/app-config.yaml .
 COPY --from=build app/app-config.production.yaml .
+COPY --from=build app/backstage-integration-config.yaml .
 RUN tar xfz bundle.tar.gz
 RUN tar xfz skeleton.tar.gz
 RUN rm skeleton.tar.gz bundle.tar.gz
