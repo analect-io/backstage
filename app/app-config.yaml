@@ -70,8 +70,14 @@ integrations:
   github:
     - host: github.com
       apps:
-        - $include: ./backstage-integration-config.yaml
-      token: ${GITHUB_TOKEN}
+        - appId: ${BACK_GITHUB_APP_APP_ID}
+          webhookUrl: ${BACK_GITHUB_APP_WEBHOOK_URL}
+          clientId: ${BACK_GITHUB_APP_CLIENT_ID}
+          clientSecret: ${BACK_GITHUB_APP_CLIENT_SECRET}
+          webhookSecret: ${BACK_GITHUB_APP_WEBHOOK_SECRET}
+          privateKey: ${BACK_GITHUB_APP_PRIVATE_KEY}
+        #- $include: ./backstage-integration-config.yaml
+      #token: ${GITHUB_TOKEN}
 
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
 # Note: After experimenting with basic setup, use CI/CD to generate docs
