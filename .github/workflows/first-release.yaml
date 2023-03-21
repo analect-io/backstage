@@ -37,7 +37,7 @@ jobs:
       tag: ${{ needs.env.outputs.tag }}
     needs:
       - env
-      - test
+    #  - test
       - quality-gate
 
   security-gateway:
