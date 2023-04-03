@@ -1,4 +1,4 @@
-name: rollback
+name: Rollback 🔙
 
 on:
   workflow_dispatch:
@@ -6,6 +6,7 @@ on:
       tag:
         description: "Set Docker Image Tag to RollBack"
         required: true
+
 jobs:
   env:
     uses: analect-io/.github/.github/workflows/env.yaml@main

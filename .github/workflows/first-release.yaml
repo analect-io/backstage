@@ -1,4 +1,4 @@
-name: first-release
+name: First Release 🌱
 
 # env:
 #   BACK_GITHUB_APP_APP_ID: ${{ secrets.BACK_GITHUB_APP_APP_ID }}
@@ -9,8 +9,9 @@ name: first-release
 #   BACK_GITHUB_APP_PRIVATE_KEY: ${{ secrets.BACK_GITHUB_APP_PRIVATE_KEY }}
 
 on:
-  workflow_dispatch:
-
+  push:
+    branches:
+      - 'first-release/*'
 
 jobs:
   env:
@@ -42,7 +43,10 @@ jobs:
 
   security-gateway:
     uses: analect-io/.github/.github/workflows/trivy.yaml@main
+    with:
+      tag: ${{ needs.env.outputs.tag }}
     needs:
+      - env
       - build-and-push
 
   deploy:

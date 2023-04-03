@@ -1,9 +1,16 @@
-name: release
+name: Release 📦
 
 on:
   push:
     branches:
       - 'release/**'
+    paths-ignore:
+      - README.md
+      - catalog-info.yaml
+      - 'docs/**'
+
+env:
+  ENVIRONMENT: development
 
 jobs:
   env:
@@ -18,8 +25,20 @@ jobs:
 
   security-gateway:
     uses: analect-io/.github/.github/workflows/trivy.yaml@main
+    with:
+      tag: ${{ needs.env.outputs.tag }}
     needs:
+      - env
       - build-and-push
+
+  release:
+    uses: devxp-tech/.github/.github/workflows/create-release.yaml@main
+    secrets: inherit
+    with:
+      tag: ${{ needs.env.outputs.tag }}
+    needs:
+      - env
+      - security-gateway
 
   deploy:
     uses: analect-io/.github/.github/workflows/deploy.yaml@main
@@ -32,6 +51,7 @@ jobs:
     needs:
       - env
       - security-gateway
+      - release
 
   notify:
     uses: analect-io/.github/.github/workflows/notify.yaml@main

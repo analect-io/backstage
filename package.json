@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@backstage/cli": "^0.22.3",
-    "@backstage/core-components": "^0.12.4"
-  }
-}
