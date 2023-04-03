@@ -48,7 +48,7 @@ jobs:
     with:
       tag: ${{ needs.env.outputs.tag }}
       repository: ${{ needs.env.outputs.repository }}
-      url: https://${{ needs.env.outputs.repository }}.devxp-tech.io
+      url: https://${{ needs.env.outputs.repository }}.analect.com
       environment: development
     needs:
       - env

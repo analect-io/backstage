@@ -32,7 +32,7 @@ jobs:
       - build-and-push
 
   release:
-    uses: devxp-tech/.github/.github/workflows/create-release.yaml@main
+    uses: analect-io/.github/.github/workflows/create-release.yaml@main
     secrets: inherit
     with:
       tag: ${{ needs.env.outputs.tag }}
