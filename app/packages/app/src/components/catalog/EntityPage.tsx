@@ -46,6 +46,10 @@ import {
   EntityGithubActionsContent,
 } from '@backstage/plugin-github-actions';
 import {
+  EntityAWSProtonServiceOverviewCard,
+  isAWSProtonServiceAvailable,
+} from '@aws/aws-proton-plugin-for-backstage';
+import {
   EntityUserProfileCard,
   EntityGroupProfileCard,
   EntityMembersListCard,
@@ -139,11 +143,22 @@ const overviewContent = (
     </Grid>
 
     <EntitySwitch>
-      <EntitySwitch.Case if={e => Boolean(isArgocdAvailable(e))}>
+      <EntitySwitch.Case if={(e) => Boolean(isArgocdAvailable(e))}>
         <Grid item sm={6}>
           <EntityArgoCDOverviewCard />
         </Grid>
+        <Grid item sm={6}>
+          <EntityArgoCDHistoryCard />
+        </Grid>
       </EntitySwitch.Case>
+    </EntitySwitch>
+    
+    <EntitySwitch>
+        <EntitySwitch.Case if={e => Boolean(isAWSProtonServiceAvailable(e))}>
+          <Grid item md={6}>
+            <EntityAWSProtonServiceOverviewCard />
+          </Grid>
+        </EntitySwitch.Case>
     </EntitySwitch>
 
     {/* <EntitySwitch>
@@ -180,6 +195,7 @@ import { EntityTodoContent } from '@backstage/plugin-todo';
 
 import {
   EntityArgoCDOverviewCard,
+  EntityArgoCDHistoryCard,
   isArgocdAvailable
 } from '@roadiehq/backstage-plugin-argo-cd';
 

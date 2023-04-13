@@ -83,6 +83,13 @@ techdocs:
         accessKeyId: ${AWS_ACCESS_KEY_ID}
         secretAccessKey: ${AWS_SECRET_ACCESS_KEY}
 
+aws:
+  accounts:
+    - accountId: 'aws-proton-backend-user'
+      accessKeyId: ${AWS_PROTON_USER_ACCESS_KEY_ID}
+      secretAccessKey: ${AWS_PROTON_USER_SECRET_ACCESS_KEY}
+
+      
 auth:
   environment: production
   ### Providing an auth.session.secret will enable session support in the auth-backend

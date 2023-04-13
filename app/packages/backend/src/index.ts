@@ -30,6 +30,7 @@ import proxy from './plugins/proxy';
 import techdocs from './plugins/techdocs';
 import sonarqube from './plugins/sonarqube';
 import search from './plugins/search';
+import awsProton from './plugins/awsProton';
 import { PluginEnvironment } from './types';
 import { ServerPermissionClient } from '@backstage/plugin-permission-node';
 import kubernetes from './plugins/kubernetes';
@@ -89,6 +90,7 @@ async function main() {
   const kubernetesEnv = useHotMemoize(module, () => createEnv('kubernetes'));
   const todoEnv = useHotMemoize(module, () => createEnv('todo'));
   const sonarqubeEnv = useHotMemoize(module, () => createEnv('sonarqube'));
+  const awsProtonEnv = useHotMemoize(module, () => createEnv('aws-proton-backend'));
 
   const apiRouter = Router();
   apiRouter.use('/catalog', await catalog(catalogEnv));
@@ -100,6 +102,7 @@ async function main() {
   apiRouter.use('/kubernetes', await kubernetes(kubernetesEnv));
   apiRouter.use('/todo', await todo(todoEnv));
   apiRouter.use('/sonarqube', await sonarqube(sonarqubeEnv));
+  apiRouter.use('/aws-proton-backend', await awsProton(awsProtonEnv));
 
   // Add backends ABOVE this line; this 404 handler is the catch-all fallback
   apiRouter.use(notFoundHandler());
