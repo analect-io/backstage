@@ -50,3 +50,13 @@ spec:
   type: database
   owner: artist-relations-team
   system: artist-engagement-portal
+---
+# https://backstage.io/docs/features/software-catalog/descriptor-format/#kind-system
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: artist-engagement-portal
+  description: Handy tools to keep artists in the loop
+spec:
+  owner: artist-relations-team
+  domain: artists
