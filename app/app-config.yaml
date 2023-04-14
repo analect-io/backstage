@@ -178,4 +178,10 @@ catalog:
       target: https://github.com/analect-io/backstage-catalog/blob/main/analect-io/all.yaml
 
     - type: url
-      target: https://github.com/analect-io/backstage/blob/main/catalog-info.yaml
+      target: https://github.com/analect-io/backstage/blob/main/catalog-info.yaml  
+ 
+    # AWS Proton Plugins for Backstage tutorial template
+    - type: url
+      target: https://github.com/analect-io/aws-proton-test/blob/main/docs/tutorial-assets/fargate-nginx-template/template.yaml
+      rules:
+        - allow: [Template]
