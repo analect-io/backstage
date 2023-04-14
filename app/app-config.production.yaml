@@ -85,7 +85,7 @@ techdocs:
 
 aws:
   accounts:
-    - accountId: 'aws-proton-backend-user'
+    - accountId: ${AWS_PROTON_ACCOUNT_ID}
       accessKeyId: ${AWS_PROTON_USER_ACCESS_KEY_ID}
       secretAccessKey: ${AWS_PROTON_USER_SECRET_ACCESS_KEY}
 
