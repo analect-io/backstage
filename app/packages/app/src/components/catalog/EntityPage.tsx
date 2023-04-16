@@ -56,6 +56,7 @@ import {
   EntityOwnershipCard,
 } from '@backstage/plugin-org';
 import { EntityTechdocsContent } from '@backstage/plugin-techdocs';
+import { TopologyPage } from '@janus-idp/backstage-plugin-topology';
 import { EmptyState } from '@backstage/core-components';
 import {
   Direction,
@@ -71,6 +72,7 @@ import {
   RELATION_PART_OF,
   RELATION_PROVIDES_API,
 } from '@backstage/catalog-model';
+
 
 const cicdContent = (
   // This is an example of how you can implement your company's logic in entity page.
@@ -263,6 +265,10 @@ const serviceEntityPage = (
 
     <EntityLayout.Route path="/todo" title="Todo">
       <EntityTodoContent />
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/topology" title="Topology">
+      <TopologyPage />
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/dependencies" title="Dependencies">
