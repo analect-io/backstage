@@ -156,6 +156,11 @@ scaffolder:
     email: info@analect.com
   # defaultCommitMessage: "🤖 U can't touch this" # Defaults to 'Initial commit'
 
+goc:
+  argo:
+    host: https://workflows.analect.com
+    namespace: argo
+
 catalog:
   import:
     entityFilename: catalog-info.yaml
