@@ -35,7 +35,7 @@ import { PluginEnvironment } from './types';
 import { ServerPermissionClient } from '@backstage/plugin-permission-node';
 import kubernetes from './plugins/kubernetes';
 import todo from './plugins/todo';
-
+import { ArgoWorkflowService } from './plugins/argoWorkflowsService';
 
 function makeCreateEnv(config: Config) {
   const root = getRootLogger();
@@ -91,6 +91,7 @@ async function main() {
   const todoEnv = useHotMemoize(module, () => createEnv('todo'));
   const sonarqubeEnv = useHotMemoize(module, () => createEnv('sonarqube'));
   const awsProtonEnv = useHotMemoize(module, () => createEnv('aws-proton-backend'));
+  const argoWorkflowsEnv = useHotMemoize(module, () => createEnv('argoWorkflowService'));
 
   const apiRouter = Router();
   apiRouter.use('/catalog', await catalog(catalogEnv));
@@ -103,6 +104,7 @@ async function main() {
   apiRouter.use('/todo', await todo(todoEnv));
   apiRouter.use('/sonarqube', await sonarqube(sonarqubeEnv));
   apiRouter.use('/aws-proton-backend', await awsProton(awsProtonEnv));
+  apiRouter.use('/argoWorkflowService', await ArgoWorkflowService(argoWorkflowsEnv));
 
   // Add backends ABOVE this line; this 404 handler is the catch-all fallback
   apiRouter.use(notFoundHandler());
